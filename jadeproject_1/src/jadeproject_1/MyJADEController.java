@@ -18,9 +18,12 @@ public class MyJADEController {
 		
 		Thread.sleep(10000);
 		
-		System.out.println(MyJADEController.class.getName()+ ": Starting up a ConterAgent...");
+		System.out.println(MyJADEController.class.getName()+ ": Starting up a CounterAgent...");
 		AgentController agentCtrl = mainCtrl.createNewAgent("CounterAgent", MyCounterAgent.class.getName(),new Object[0] );
+		AgentController agentCtrl2 = mainCtrl.createNewAgent("new Agent", AgentWithArguments.class.getName(), new Object[0]);
 		agentCtrl.start();
+		agentCtrl2.start();
+		
 		
 		Thread.sleep(20000);
 		
