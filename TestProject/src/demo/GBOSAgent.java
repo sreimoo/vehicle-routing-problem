@@ -1,6 +1,7 @@
 package demo;
 
 import jade.core.Agent;
+
 import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.OneShotBehaviour;
 

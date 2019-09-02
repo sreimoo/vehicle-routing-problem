@@ -2,9 +2,10 @@ package demo;
 
 import jade.core.Agent;
 import jade.core.behaviours.TickerBehaviour; 
+@SuppressWarnings("serial")
 public class MyCounterAgent extends Agent implements MyAgentInterface {
 private TickerBehaviour counter;
-public void myCounterAgent() {
+public MyCounterAgent() {
 	registerO2AInterface(MyAgentInterface.class, this);
 }
 protected void setup() {
