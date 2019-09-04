@@ -1,7 +1,27 @@
 package demo;
 
 public class RoutingWorld {
-
+	int vehicleNumber = 1; // total number of vehicles working in the world
+	int locationNumber = 16; // the total number of locations in the world
+	int [][] world = new int [912][640];
+	int depot = world[456][320];
+	int l1 = world[228][0];
+	int l2 = world[912][0];
+	int l3 = world[0][80];
+	int l4 = world[114][80];
+	int l5 = world[570][160];
+	int l6 = world[798][160];
+	int l7 = world[342][240];
+	int l8 = world[684][240];
+	int l9 = world[570][400];
+	int l10 = world[912][400];
+	int l11= world[114][480];
+	int l12= world[228][480];
+	int l13= world[342][560];
+	int l14= world[684][560];
+	int l15= world[0][640];
+	int l16= world[798][640];
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		final int [][] distanceMatrix = {
@@ -29,32 +49,14 @@ public class RoutingWorld {
 	};
 		for (int i =0; i<913; i++) {
 			for(int j = 0; j<641; j++) {
-				//int []printer = new printer[]{i,j};
+				
 				System.out.print("|_| ");
 			}
 			System.out.println("");
 		}
-		@SuppressWarnings("unused")
-		int vehicleNumber = 1; // total number of vehicles working in the world
-		int locationNumber = 16; // the total number of locations in the world
-		int [][] world = new int [912][640];
-		int []depot = new int[] {456,320}; // location of warehouse
-		int []loc1 = new int[] {228,0}; // location 1
-		int []loc2 = new int[] {912,0}; // location 2
-		int []loc3 = new int[] {0,80}; // location 3
-		int []loc4 = new int[] {114,80}; // location 4
-		int []loc5 = new int[] {570,160}; // location 5
-		int []loc6 = new int[] {798,160}; // location 6
-		int []loc7 = new int[] {342,240}; // location 7
-		int []loc8 = new int[] {684,240}; // location 8
-		int []loc9 = new int[] {570,400}; // location 9
-		int []loc10 = new int[] {912,400}; // location 10
-		int []loc11 = new int[] {114,480}; // location 11
-		int []loc12 = new int[] {228,480}; // location 12
-		int []loc13 = new int[] {342,560}; // location 13
-		int []loc14 = new int[] {684,560}; // location 14
-		int []loc15 = new int[] {0,640}; // location 15
-		int []loc16 = new int[] {798,640}; // location 16
+		
+		
+		
 				
 }
 }
