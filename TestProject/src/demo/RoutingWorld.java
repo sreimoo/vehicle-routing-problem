@@ -1,29 +1,31 @@
 package demo;
 
 public class RoutingWorld {
-	int vehicleNumber = 1; // total number of vehicles working in the world
-	int locationNumber = 16; // the total number of locations in the world
-	int [][] world = new int [912][640];
-	int depot = world[456][320];
-	int l1 = world[228][0];
-	int l2 = world[912][0];
-	int l3 = world[0][80];
-	int l4 = world[114][80];
-	int l5 = world[570][160];
-	int l6 = world[798][160];
-	int l7 = world[342][240];
-	int l8 = world[684][240];
-	int l9 = world[570][400];
-	int l10 = world[912][400];
-	int l11= world[114][480];
-	int l12= world[228][480];
-	int l13= world[342][560];
-	int l14= world[684][560];
-	int l15= world[0][640];
-	int l16= world[798][640];
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		int vehicleNumber = 1; // total number of vehicles working in the world
+		int locationNumber = 16; // the total number of locations in the world
+		int [][] world = new int [913][641];
+		int depot = world[456][320];
+		int l1 = world[228][0];
+		int l2 = world[912][0];
+		int l3 = world[0][80];
+		int l4 = world[114][80];
+		int l5 = world[570][160];
+		int l6 = world[798][160];
+		int l7 = world[342][240];
+		int l8 = world[684][240];
+		int l9 = world[570][400];
+		int l10 = world[912][400];
+		int l11= world[114][480];
+		int l12= world[228][480];
+		int l13= world[342][560];
+		int l14= world[684][560];
+		int l15= world[0][640];
+		int l16= world[798][640];
 		final int [][] distanceMatrix = {
 				// This is a multiple dimension array reflecting distances of each node from each node. The first row is the distance of everyone from the warehouse
 		        {0, 548, 776, 696, 582, 274, 502, 194, 308, 194, 536, 502, 388, 354, 468, 776, 662},
@@ -47,15 +49,29 @@ public class RoutingWorld {
 		
 
 	};
-		for (int i =0; i<913; i++) {
+		System.out.println(l2);
+		/*for (int i =0; i<913; i++) {
 			for(int j = 0; j<641; j++) {
+				if(world[i][j]==l1) {
+					System.out.print("|x|");
+					
+				}
+				else {
+					System.out.print("|_| ");
+				}
 				
-				System.out.print("|_| ");
 			}
 			System.out.println("");
 		}
-		
-		
+		*/
+		 /*final int transitCallbackIndex =
+			        routing.registerTransitCallback((long fromIndex, long toIndex) -> {
+			          // Convert from routing variable Index to user NodeIndex.
+			          int fromNode = manager.indexToNode(fromIndex);
+			          int toNode = manager.indexToNode(toIndex);
+			          return data.distanceMatrix[fromNode][toNode];
+			        });
+			    routing.setArcCostEvaluatorOfAllVehicles(transitCallbackIndex);*/
 		
 				
 }
