@@ -1,30 +1,86 @@
 package RoutingAgents;
 
 public class RoutingWorld {
-
+	
+	
 	public static void main(String[] args) {
-		@SuppressWarnings("unused")
-		int vehicleNumber = 1; // total number of vehicles working in the world
-		int locationNumber = 16; // the total number of locations in the world
-		int [][] world = new int [912][640];
-		int []depot = new int[] {456,320}; // location of warehouse
-		int []loc1 = new int[] {228,0}; // location 1
-		int []loc2 = new int[] {912,0}; // location 2
-		int []loc3 = new int[] {0,80}; // location 3
-		int []loc4 = new int[] {114,80}; // location 4
-		int []loc5 = new int[] {570,160}; // location 5
-		int []loc6 = new int[] {798,160}; // location 6
-		int []loc7 = new int[] {342,240}; // location 7
-		int []loc8 = new int[] {684,240}; // location 8
-		int []loc9 = new int[] {570,400}; // location 9
-		int []loc10 = new int[] {912,400}; // location 10
-		int []loc11 = new int[] {114,480}; // location 11
-		int []loc12 = new int[] {228,480}; // location 12
-		int []loc13 = new int[] {342,560}; // location 13
-		int []loc14 = new int[] {684,560}; // location 14
-		int []loc15 = new int[] {0,640}; // location 15
-		int []loc16 = new int[] {798,640}; // location 16
 		// TODO Auto-generated method stub
+		
+		int vehicleNumber = 1; // total number of vehicles working in the world
+		int locationNumber = 17; // the total number of locations in the world
+		int [] loc_x = new int[locationNumber];
+		int [] loc_y = new int[locationNumber];
+		Node [][] world = new Node [100][100];
+		
+		loc_x[0] = 45;
+		loc_y[0] = 32;
+		loc_x[1] = 22;
+		loc_y[1] = 0;
+		loc_x[2] = 91;
+		loc_y[2] = 0;
+		loc_x[3] = 0;
+		loc_y[3] = 80;
+		loc_x[4] = 11;
+		loc_y[4] = 80;
+		loc_x[5] = 57;
+		loc_y[5] = 16;
+		loc_x[6] = 79;
+		loc_y[6] = 16;
+		loc_x[7] = 34;
+		loc_y[7] = 24;
+		loc_x[8] = 68;
+		loc_y[8] = 24;
+		loc_x[9] = 57;
+		loc_y[9] = 40;
+		loc_x[10] = 91;
+		loc_y[10] = 40;
+		loc_x[11] = 11;
+		loc_y[11] = 48;
+		loc_x[12] = 22;
+		loc_y[12] = 48;
+		loc_x[13] = 34;
+		loc_y[13] = 56;
+		loc_x[14] = 68;
+		loc_y[14] = 56;
+		loc_x[15] = 0;
+		loc_y[15] = 64;
+		loc_x[16] = 79;
+		loc_y[16] = 64;
+		
+		/*
+		Node depot = world[456][320];
+		Node l1 = world[228][0];
+		Node l2 = world[912][0];
+		Node l3 = world[0][80];
+		Node l4 = world[114][80];
+		Node l5 = world[570][160];
+		Node l6 = world[798][160];
+		Node l7 = world[342][240];
+		Node l8 = world[684][240];
+		Node l9 = world[570][400];
+		Node l10 = world[912][400];
+		Node l11= world[114][480];
+		Node l12= world[228][480];
+		Node l13= world[342][560];
+		Node l14= world[684][560];
+		Node l15= world[0][640];
+		Node l16= world[798][640];
+		*/
+		for(int y = 0; y < 100; y++) {
+			for(int x = 0; x < 100; x++) {				
+				for(int i = 0; i < locationNumber; i++) {
+					if(x == 45 && y == 32) {
+						world[x][y] = new Node("Depot", 0, x, y);
+					}
+					else if(x == loc_x[i] && y == loc_y[i]) {
+						world[x][y] = new Node("Location", (int)(Math.random() * 10 + 1), x, y);
+					}
+				}
+				if(world[x][y] == null) {
+					world[x][y] = new Node("Space", 0, x, y);
+				}
+			}
+		}
 		final int [][] distanceMatrix = {
 				// This is a multiple dimension array reflecting distances of each node from each node. The first row is the distance of everyone from the warehouse
 		        {0, 548, 776, 696, 582, 274, 502, 194, 308, 194, 536, 502, 388, 354, 468, 776, 662},
@@ -48,16 +104,33 @@ public class RoutingWorld {
 		
 
 	};
-		/*
-		for (int i =0; i<913; i++) {
-			for(int j = 0; j<641; j++) {
-				//int []printer = new printer[]{i,j};
-				System.out.print("|_| ");
+		//System.out.println(l2);
+		for (int i =0; i<100; i++) {
+			for(int j = 0; j<100; j++) {
+				if(world[i][j].name == "Location") {
+					System.out.print(world[i][j].parcels);
+					
+				}
+				else if(world[i][j].name == "Depot") {
+					System.out.print("|DP|");
+				}
+				else {
+					System.out.print("|_| ");
+				}
+				
 			}
 			System.out.println("");
 		}
-		*/
-		System.out.println(distanceMatrix[0][16]);
+		
+		 /*final int transitCallbackIndex =
+			        routing.registerTransitCallback((long fromIndex, long toIndex) -> {
+			          // Convert from routing variable Index to user NodeIndex.
+			          int fromNode = manager.indexToNode(fromIndex);
+			          int toNode = manager.indexToNode(toIndex);
+			          return data.distanceMatrix[fromNode][toNode];
+			        });
+			    routing.setArcCostEvaluatorOfAllVehicles(transitCallbackIndex);*/
+		
 				
 }
 }
