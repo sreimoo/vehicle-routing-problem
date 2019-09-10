@@ -3,6 +3,7 @@ package RoutingAgents;
 public class RoutingWorld {
 	
 	
+	 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -81,6 +82,7 @@ public class RoutingWorld {
 				}
 			}
 		}
+		
 		final int [][] distanceMatrix = {
 				// This is a multiple dimension array reflecting distances of each node from each node. The first row is the distance of everyone from the warehouse
 		        {0, 548, 776, 696, 582, 274, 502, 194, 308, 194, 536, 502, 388, 354, 468, 776, 662},
@@ -109,7 +111,6 @@ public class RoutingWorld {
 			for(int j = 0; j<100; j++) {
 				if(world[i][j].name == "Location") {
 					System.out.print(world[i][j].parcels);
-					
 				}
 				else if(world[i][j].name == "Depot") {
 					System.out.print("|DP|");
@@ -122,6 +123,12 @@ public class RoutingWorld {
 			System.out.println("");
 		}
 		
+		int dist = TellMeDistance(world[57][40], world[11][48]);
+		
+		System.out.println(dist);
+		
+		
+		
 		 /*final int transitCallbackIndex =
 			        routing.registerTransitCallback((long fromIndex, long toIndex) -> {
 			          // Convert from routing variable Index to user NodeIndex.
@@ -133,4 +140,14 @@ public class RoutingWorld {
 		
 				
 }
-}
+	public static int TellMeDistance (Node a, Node b) {
+		int x1 =a.x_pos;
+		int x2 =b.x_pos;
+		int y1 =a.y_pos;
+		int y2 =b.y_pos;
+		int dis = Math.abs((x2-x1)+(y2-y1));
+		return dis;
+	}
+	
+	}
+	
