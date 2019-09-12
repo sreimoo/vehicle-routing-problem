@@ -27,11 +27,11 @@ public class MasterRoutingAgent extends Agent{
 				catch (Exception e) {             
 				System.out.println( "Problem searching AMS: " + e );             
 				e.printStackTrace();   
-				}      
+				} 
+			
 			AID da1 = getAID("DeliveryAgent1");
 			AID da2 = getAID("DeliveryAgent2");
 			AID da3 = getAID("DeliveryAgent3");
-			
 			for (int i=0; i<agents.length;i++)   {    
 				AID agentID = agents[i].getName(); 
 				if(agentID.equals(da1) || agentID.equals(da2) || agentID.equals(da3)) {
@@ -53,18 +53,23 @@ public class MasterRoutingAgent extends Agent{
 				ACLMessage msg= receive();     
 				if (msg!=null) {      
 					// Print out message content      
-					System.out.println(getLocalName()+ ": Received Capacity Constraints: " + msg.getContent() 
-					+ " from " + msg.getSender().getLocalName());      
+					System.out.println(getLocalName()+ ": Received Capacity Constraints: " + msg.getSender().getLocalName() + " can carry " + msg.getPerformative() 
+					+ " parcels");      
 					}  
+				locations = world.TellMeLocations();
+				System.out.println("There are: " + locations.size() + " Locations");
+				
+				for(Node a : locations) {
+					if(a.parcels < msg.getPerformative() ) {
+						System.out.println("Sending " + msg.getSender().getLocalName() + " to " + a.name + " with "
+					+ a.parcels + " parcels to be collected");
+						break;
+					}
+				}
 				}
 				// Continue listening //    
 				block();  
-				locations = world.TellMeLocations();
-				for(Node a : locations) {
-					System.out.println(a.parcels);
-				}
-				// This line gets printed since the blocking effect is achieved only after the action() method returns     
-				//System.out.println(getLocalName() + ": This line is printed");
+				
 				}
 			} );
 			
