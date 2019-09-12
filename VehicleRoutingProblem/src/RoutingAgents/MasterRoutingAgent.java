@@ -17,6 +17,7 @@ public class MasterRoutingAgent extends Agent{
 	ArrayList<Node> locations = new ArrayList<Node>();
 	
 	protected void setup() {
+		world.BuildWorld();
 		AMSAgentDescription [] agents = null;        
 		try {             
 			SearchConstraints c = new SearchConstraints();             
@@ -56,12 +57,14 @@ public class MasterRoutingAgent extends Agent{
 					+ " from " + msg.getSender().getLocalName());      
 					}  
 				}
-				
-				
 				// Continue listening //    
-				block();    
+				block();  
+				locations = world.TellMeLocations();
+				for(Node a : locations) {
+					System.out.println(a.parcels);
+				}
 				// This line gets printed since the blocking effect is achieved only after the action() method returns     
-				//System.out.println(getLocalName() + ": This line is printed");     
+				//System.out.println(getLocalName() + ": This line is printed");
 				}
 			} );
 			

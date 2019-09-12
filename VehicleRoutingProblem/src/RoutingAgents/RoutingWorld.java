@@ -3,12 +3,9 @@ package RoutingAgents;
 import java.util.ArrayList;
 
 public class RoutingWorld {
-	
-	
 
-
-	public static Node [][] world = new Node [100][100];
-	public static void main(String[] args) {
+	public Node [][] world = new Node [100][100];
+	public void BuildWorld() {
 		// TODO Auto-generated method stub
 		
 		 // total number of vehicles working in the world
@@ -150,7 +147,7 @@ public class RoutingWorld {
 		
 				
 }
-	public static int TellMeDistance (Node a, Node b) {
+	public int TellMeDistance (Node a, Node b) {
 		int x1 =a.x_pos;
 		int x2 =b.x_pos;
 		int y1 =a.y_pos;
@@ -158,14 +155,14 @@ public class RoutingWorld {
 		int dis = Math.abs((x2-x1)+(y2-y1));
 		return dis;
 	}
-	public static ArrayList<Node> TellMeLocations() {
+	
+	public ArrayList<Node> TellMeLocations() {
 		ArrayList<Node> Locations = new ArrayList<Node>();
 		for (int i = 0; i<world.length;i++) {
 			for(int j = 0; j<world.length;j++) {
 			Node n = world[i][j];
 			if(n.name == "Location") {
-				Locations.add(n);
-				
+				Locations.add(n);	
 			}
 			}
 			
