@@ -17,7 +17,7 @@ public class TestSenderAgent extends Agent{
 			public void action() {     
 				ACLMessage msg= receive();     
 				if (msg!=null) {      
-					System.out.println(getLocalName()+ ": Received response " + 
+					System.out.println(getLocalName()+ ": Received coordinates " + 
 				msg.getContent() + " from " + msg.getSender().getLocalName());     
 					}     
 				block();     

@@ -1,6 +1,8 @@
 package RoutingAgents;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
 
 import jade.core.AID;
 import jade.core.Agent;
@@ -18,6 +20,10 @@ public class MasterRoutingAgent extends Agent{
 	
 	protected void setup() {
 		world.BuildWorld();
+		System.out.println("Enter number of parcels to be delivered: ");
+		Scanner input = new Scanner(System.in);
+		int parcels = input.nextInt();
+		input.close();
 		AMSAgentDescription [] agents = null;        
 		try {             
 			SearchConstraints c = new SearchConstraints();             
@@ -58,14 +64,21 @@ public class MasterRoutingAgent extends Agent{
 					}  
 				locations = world.TellMeLocations();
 				System.out.println("There are: " + locations.size() + " Locations");
+				System.out.println("There are: " + parcels + " parcels");
+				Node dest = new Node("loc", 0, 0, 0);
 				
 				for(Node a : locations) {
 					if(a.parcels < msg.getPerformative() ) {
+						dest = a;
 						System.out.println("Sending " + msg.getSender().getLocalName() + " to " + a.name + " with "
-					+ a.parcels + " parcels to be collected");
+					+ a.parcels + " parcels to be delivered");
 						break;
 					}
 				}
+				ACLMessage msg_pos = new ACLMessage(ACLMessage.INFORM);
+				msg_pos.setContent(dest.x_pos + " "+ dest.y_pos);
+				msg_pos.addReceiver(new AID(msg.getSender().getLocalName(), AID.ISLOCALNAME) );	  
+				send(msg_pos);
 				}
 				// Continue listening //    
 				block();  

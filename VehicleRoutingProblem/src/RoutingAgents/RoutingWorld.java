@@ -14,7 +14,6 @@ public class RoutingWorld {
 		int [] loc_x = new int[locationNumber];
 		int [] loc_y = new int[locationNumber];
 		
-		
 		loc_x[0] = 45;
 		loc_y[0] = 32;
 		loc_x[1] = 22;
