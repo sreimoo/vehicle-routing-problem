@@ -9,8 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
+
 public class GridClass extends Application {
-	
 	
 	public Line getLine(float X1,float Y1, float X2,float Y2) {
 		Line line = new Line();

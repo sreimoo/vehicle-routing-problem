@@ -1,5 +1,7 @@
 package RoutingAgents;
 
+import java.util.ArrayList;
+
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -11,6 +13,8 @@ import jade.domain.FIPAAgentManagement.SearchConstraints;
 @SuppressWarnings("serial")
 public class MasterRoutingAgent extends Agent{
 	int agentCount = 0;
+	RoutingWorld world = new RoutingWorld(); 
+	ArrayList<Node> locations = new ArrayList<Node>();
 	
 	protected void setup() {
 		AMSAgentDescription [] agents = null;        
@@ -26,6 +30,7 @@ public class MasterRoutingAgent extends Agent{
 			AID da1 = getAID("DeliveryAgent1");
 			AID da2 = getAID("DeliveryAgent2");
 			AID da3 = getAID("DeliveryAgent3");
+			
 			for (int i=0; i<agents.length;i++)   {    
 				AID agentID = agents[i].getName(); 
 				if(agentID.equals(da1) || agentID.equals(da2) || agentID.equals(da3)) {
@@ -51,6 +56,8 @@ public class MasterRoutingAgent extends Agent{
 					+ " from " + msg.getSender().getLocalName());      
 					}  
 				}
+				
+				
 				// Continue listening //    
 				block();    
 				// This line gets printed since the blocking effect is achieved only after the action() method returns     
